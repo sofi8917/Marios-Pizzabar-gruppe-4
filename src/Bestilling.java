@@ -21,12 +21,12 @@ public class Bestilling {
         this.pris = pris;
     }
 
-    public int getNummer(){
-        return nummer;
-    }
-
     public String getNavn(){
         return navn;
+    }
+
+    public int getNummer(){
+        return nummer;
     }
 
     public int getPris() {
@@ -36,7 +36,5 @@ public class Bestilling {
     public String toString(){
         return nummer + ". " + navn + ": " + pris +" kr.";
     }
-
-}
 
 }

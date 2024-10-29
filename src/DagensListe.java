@@ -1,15 +1,16 @@
 import java.util.ArrayList;
-
     public class DagensListe {
 
-        private ArrayList<Bestilling> liste;
+        private static ArrayList<Bestilling> liste;
 
         public DagensListe(){
             liste = new ArrayList<Bestilling>();
         }
-        public void addBestilling(Bestilling valg){
-            liste.add(valg);
+
+        public static void addBestilling(Bestilling bestilling){
+            liste.add(bestilling);
         }
+
         public void removeBestilling(Bestilling valg){
             if(liste.contains(valg)){
                 System.out.println("findes ikke");
@@ -34,7 +35,7 @@ import java.util.ArrayList;
         public void editNavn(String navn1, String navn2){
             searchBestilling(navn1).setNavn(navn2);
         }
-
+/*
         @Override
         public String toString() {
             String liste = "";
@@ -44,4 +45,5 @@ import java.util.ArrayList;
             }
             return liste;
         }
+ */
     }
