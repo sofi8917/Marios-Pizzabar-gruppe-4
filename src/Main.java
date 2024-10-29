@@ -44,6 +44,7 @@ public class Main {
         boolean user = true;
         DagensListe orders = new DagensListe();
 
+
         while (user = true) {
             System.out.println("Dagens liste er oprettet. Vælg mellem følgende:");
             System.out.println("1. Tilføj bestilling \n 2. Fjern en bestilling \n 3. Vis alle bestillinger \n 4. Find specifik bestilling \n 5. Redigér bestilling \n 6. slet dagens liste \n 7. Tak for i dag:)");
