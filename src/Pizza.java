@@ -1,5 +1,5 @@
 public class Pizza {
-    static int nummerPizza;
+    int nummerPizza;
     String navnPizza;
     int prisPizza;
 
@@ -21,7 +21,7 @@ public class Pizza {
         this.prisPizza = prisPizza;
     }
 
-    public static int getNummerPizza(){
+    public int getNummerPizza(){
         return nummerPizza;
     }
 
