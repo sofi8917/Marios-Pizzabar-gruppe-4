@@ -4,7 +4,7 @@ public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         DagensListe dagensListe = new DagensListe();
-        menu pizzaMenu = new menu();
+        Menu pizzaMenu = new Menu();
         boolean user = true;
 
         while (user = true) {
@@ -14,7 +14,7 @@ public class Main {
 
             switch (opgave) {
                 case 1:
-                    menu(pizzaMenu());
+                    Menu(pizzaMenu());
                     System.out.println("Indtast bestilling");
 
             }
