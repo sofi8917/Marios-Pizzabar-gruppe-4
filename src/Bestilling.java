@@ -1,7 +1,7 @@
 public class Bestilling {
-    private int nummer;
-    private String navn;
-    private int pris;
+    int nummer;
+    String navn;
+    int pris;
 
     public Bestilling(int nummer, String navn, int pris){
         this.nummer = nummer;
@@ -33,7 +33,6 @@ public class Bestilling {
         return pris;
     }
 
-    @Override
     public String toString(){
         return nummer + ". " + navn + ": " + pris +" kr.";
     }
