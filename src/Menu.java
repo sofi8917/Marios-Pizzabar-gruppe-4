@@ -1,11 +1,12 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public class menu {
+public class Menu {
 /* Pizza = nummerPizza, navnPizza, prisPizza */
 
-    public void createPizza(){
-        List<Pizza> pizzaMenu = new ArrayList<>();
+
+    public Menu(){
+        ArrayList<Pizza> pizzaMenu = new ArrayList<>();
         Pizza vesuvio = new Pizza(1, "Vesuvio", 57);
         Pizza amerikaner = new Pizza(2, "Amerikaner", 53);
         Pizza cacciatore = new Pizza(3, "Cacciatore", 57);
@@ -38,4 +39,6 @@ public class menu {
         Pizza bocaJuniors = new Pizza(30, "Boca Juniors", 69);
         Pizza sofiANapoli = new Pizza(31, "Sofi A Napoli", 78);
     }
+
+
 }
