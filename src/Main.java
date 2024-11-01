@@ -1,4 +1,6 @@
 import java.util.Scanner;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
@@ -7,76 +9,98 @@ public class Main {
         Menu pizzaMenu = new Menu();
         boolean user = true;
 
-        while (user = true) {
+        while (user) {
             System.out.println("Dagens liste er oprettet. Vælg mellem følgende:");
-            System.out.println("1. Tilføj bestilling \n2. Fjern en bestilling \n3. Vis alle bestillinger \n4. Find specifik bestilling \n5. Redigér bestilling \n6. Slet dagens liste \n7. Tak for i dag:)");
+            System.out.println("1. Tilføj bestilling");
+            System.out.println("2. Fjern en bestilling");
+            System.out.println("3. Vis Dagens Liste - alle bestillinger");
+            System.out.println("4. Find specifik bestilling");
+            System.out.println("5. Redigér bestilling");
+            System.out.println("6. Slet Dagens Liste");
+            System.out.println("7. Se listen over Ekspederede ordrer");
+            System.out.println("8. Tak for i dag:)");
             int opgave = sc.nextInt();
 
             switch (opgave) {
                 case 1:
-                    Menu(pizzaMenu());
-                    System.out.println("Indtast bestilling");
+                    System.out.print("Indtast kundens navn: ");
+                    sc.nextLine();
+                    String kundenavn = sc.nextLine();
 
+                    System.out.print("Indtast kundens telefonnummer: ");
+                    int telefonnummer = sc.nextInt();
+
+                    Kunde kunde = new Kunde(kundenavn, telefonnummer);
+
+                    pizzaMenu.printPizza();
+                    ArrayList<Pizza> bestiltePizzaer = new ArrayList<>();
+                    boolean continueOrdering = true;
+
+                    while (continueOrdering) {
+                        System.out.print("Indtast nummeret på pizzaen du vil bestille (eller 0 for at afslutte): ");
+                        int pizzaNummer = sc.nextInt();
+
+                        if (pizzaNummer == 0) {
+                            continueOrdering = false;
+                        } else if (pizzaNummer > 0 && pizzaNummer <= pizzaMenu.pizzaMenu.size()) {
+                            Pizza valgtPizza = pizzaMenu.pizzaMenu.get(pizzaNummer - 1);
+                            bestiltePizzaer.add(valgtPizza); // Tilføj til bestillingslisten
+                            System.out.println(valgtPizza.getNavnPizza() + " er tilføjet til din bestilling.");
+                        } else {
+                            System.out.println("Ugyldigt valg. Prøv igen.");
+                        }
+                    }
+                    Bestilling bestilling = new Bestilling(kunde, bestiltePizzaer);
+                    dagensListe.addBestilling(bestilling);
+                    System.out.println("Bestilling tilføjet!");
+
+                    break;
+                case 2:
+                    System.out.println(dagensListe);
+                    System.out.print("Hvilken bestilling vil du gerne fjerne? (indtast ordrenummer): ");
+                    int ordrenummer = sc.nextInt();
+                    dagensListe.removeBestilling(ordrenummer);
+                case 3:
+                    System.out.println("Her er Dagens liste:");
+                    System.out.println(dagensListe);
+                    break;
+                case 4:
+                    boolean searchOrder = true;
+                    int searchChoice = sc.nextInt();
+                    System.out.println("Vil du søge efter 1. ordrenummer, 2. kundenavn eller 3. telefonnummer?");
+                    while (searchOrder){
+                        if (searchChoice == 1){
+                            System.out.println("Skriv venligst ordrenummeret på ordren:");
+                        }
+                        else if (searchChoice == 2){
+                            System.out.println("Skriv venligst kundenavn på ordren:");
+                        }
+                        else if (searchChoice == 3){
+                            System.out.println("Skriv venligst telefonummeret på ordren:");
+                        }
+                        else {
+                            searchOrder = false;
+                        }
+                    }
+
+                    break;
+                case 5:
+                    System.out.println("");
+                    break;
+                case 6:
+                    System.out.println("");
+                    break;
+                case 7:
+                    System.out.println("");
+                    break;
+                case 8:
+                    user = false;
+                    System.out.println("Farvel og tak! \uD83D\uDE00");
+                    break;
+                default:
+                    System.out.println("Ugyldigt valg, prøv igen.");
             }
 
-        /*
-
-        DagensListe orders = new DagensListe();
-
-
-
-            if (opgave == 1) {
-                sc.nextLine();
-                System.out.println("Indtast Bestilling");
-                int nummer = sc.nextInt();
-                if (Pizza.getNummerPizza() == nummer) {
-                    DagensListe.addBestilling(new Bestilling(sc.nextLine()));
-                    System.out.println(order);
-                    System.out.println();
-                }
-            } else if (opgave == 2) {
-                sc.nextLine();
-                System.out.println("Vælg Bestilling");
-                System.out.println(orders);
-                String S = sc.nextLine();
-                orders.removeBestilling(orders.searchBestilling(S));
-                System.out.println("Din Bestilling er nu opdateret:");
-                System.out.println(orders);
-                System.out.println();
-            } else if (opgave == 3) {
-                System.out.println(orders);
-                System.out.println();
-            } else if (opgave == 4) {
-                sc.nextLine();
-                System.out.println("Vælg ordre");
-                System.out.println(orders);
-                String S = sc.nextLine();
-                orders.searchOrders(S);
-                System.out.println();
-            } else if (opgave == 5) {
-                sc.nextLine();
-                System.out.println("vælg ordre");
-                System.out.println(orders);
-                String S1 = sc.nextLine();
-                String gammelTitel = "Gammel pizza: " + S1;
-                System.out.println("vælg ny pizza");
-                String S2 = sc.nextLine();
-                String nyTitel = "Ny titel: " + S2;
-                orders.editTitel(S1, S2);
-                System.out.println(nyTitel);
-                System.out.println();
-            } else if (opgave == 6) {
-                sc.nextLine();
-                orders.clearDagensListe();
-                System.out.println(orders + "du har slettet dagens liste");
-                System.out.println();
-            } else if (opgave == 7) {
-                sc.nextLine();
-                System.out.println("Dit program er nu afsluttet");
-                System.exit(0);
-            }
-
-        } */
         }
 
     }
