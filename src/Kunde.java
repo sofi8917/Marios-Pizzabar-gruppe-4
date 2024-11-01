@@ -1,6 +1,6 @@
 public class Kunde {   //ciao
-    String kundeNavn;
-    int telefonnummer;
+    private String kundeNavn;
+    private int telefonnummer;
 
     public Kunde(String kundeNavn, int telefonnummer){
         this.kundeNavn = kundeNavn;
@@ -24,7 +24,7 @@ public class Kunde {   //ciao
     }
 
     public String toString(){
-        return "Navn: " + kundeNavn + "telefonnummer: " + telefonnummer;
+        return "Navn: " + kundeNavn + ", telefonnummer: " + telefonnummer;
     }
 
 }

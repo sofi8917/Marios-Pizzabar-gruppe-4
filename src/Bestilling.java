@@ -1,18 +1,18 @@
 import java.util.ArrayList;
 
 public class Bestilling {
-    int nummer; // ordrenummer
-    String navn; // navn på kunde
-    int pris; // samlet pris på ordre
+    int nummer;
+    String navn;
+    int pris;
     Tidspunkt afhentningstidspunkt;
     ArrayList<Pizza> pizzaer;
 
-    public Bestilling(int nummer, String navn, int pris, Tidspunkt afhentningstidspunkt){
+    public Bestilling(int nummer, String navn, Tidspunkt afhentningstidspunkt, ArrayList<Pizza> pizzaer) {
         this.nummer = nummer;
         this.navn = navn;
-        this.pris = pris;
         this.afhentningstidspunkt = afhentningstidspunkt;
-        this.pris = beregnPris(pizzaer);
+        this.pizzaer = pizzaer;
+        this.pris = beregnPris();
     }
 
     public void setNummer(int nummer){
@@ -51,8 +51,9 @@ public class Bestilling {
         return total;
     }
 
-    public String toString(){
-        return nummer + ". " + navn + ": " + pris +" kr.";
+    @Override
+    public String toString() {
+        return nummer + ". " + navn + ": " + pris + " kr. - " + pizzaer.toString();
     }
 
 }

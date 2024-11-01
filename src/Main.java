@@ -50,8 +50,8 @@ public class Main {
                             System.out.println("Ugyldigt valg. Prøv igen.");
                         }
                     }
-                    Bestilling bestilling = new Bestilling(kunde, bestiltePizzaer);
-                    dagensListe.addBestilling(bestilling);
+                   /* Bestilling bestilling = new Bestilling(kunde, bestiltePizzaer);
+                    dagensListe.addBestilling(bestilling);*/
                     System.out.println("Bestilling tilføjet!");
 
                     break;
@@ -60,6 +60,7 @@ public class Main {
                     System.out.print("Hvilken bestilling vil du gerne fjerne? (indtast ordrenummer): ");
                     int ordrenummer = sc.nextInt();
                     dagensListe.removeBestilling(ordrenummer);
+                    break;
                 case 3:
                     System.out.println("Her er Dagens liste:");
                     System.out.println(dagensListe);

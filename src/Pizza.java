@@ -1,7 +1,7 @@
 public class Pizza {
-    int nummerPizza;
-    String navnPizza;
-    int prisPizza;
+    private int nummerPizza;
+    private String navnPizza;
+    private int prisPizza;
 
     public Pizza(int nummerPizza, String navnPizza, int prisPizza){
         this.nummerPizza = nummerPizza;

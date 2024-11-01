@@ -33,4 +33,13 @@ public class EkspederedeOrdrer {
             System.out.println(bestilling);
         }
     }
+
+
+    public String toString() {
+        StringBuilder result = new StringBuilder();
+        for (Bestilling bestilling : ekspederedeBestillinger) {
+            result.append(bestilling.toString()).append("\n");
+        }
+        return result.toString();
+    }
 }
