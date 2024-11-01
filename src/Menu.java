@@ -17,6 +17,8 @@ public class Menu {
     /* Pizza = nummerPizza, navnPizza, prisPizza */
 
     public void createPizza() {
+/* Er lavet som ArrayList med nummer på pizza, navnet på pizza og prisen på pizza,
+ingredienserne/beskrivelsen kommer længere nede */
 
         pizzaMenu.add(new Pizza(1, "Vesuvio", 57));
         pizzaMenu.add(new Pizza(2, "Amerikaner", 53));
@@ -81,7 +83,7 @@ public class Menu {
         this.beskrivelse.add("tomatsauce, mozzarella, skinke, pepperoni, hvidløg og bacon..................");
         this.beskrivelse.add("tomatsauce, mozzarella, kødstrimler, salat og creme fraiche dressing....");
         this.beskrivelse.add("tomatsauce, mozzarella, chili, hvidløg, artiskok og kødstrimler........");
-
+/* Disse beskrivelser tilføjes til hver enkel pizza mellem navnPizza og prisPizza */
         printPizza();
     }
 
@@ -92,20 +94,20 @@ public class Menu {
         System.out.println("|                                                                                                   |");
         for (int i = 0; i < pizzaMenu.size(); i++) {
             Pizza pizza = pizzaMenu.get(i);
-            String beskrivelser = beskrivelse.get(i); // Hent den specifikke beskrivelse
+            String beskrivelser = beskrivelse.get(i);
 
-            boolean isNyhed = beskrivelser.contains("NYHED");
+            boolean isNyhed = beskrivelser.contains("NYHED"); // Her har vi lavet en boolean for beskrivelser, der indeholder ordet "NYHED".
 
-            String pizzanummerFarvet = "\u001B[1m" + pizza.getNummerPizza() + ". " + "\u001B[0m";
-            String pizzaNavnFarvet = "\u001B[35;1m" + pizza.getNavnPizza() + "\u001B[0m";
-            String nyhedFarvet = beskrivelser.contains("NYHED") ? "\u001B[31mNYHED\u001B[0m " : "";
-            String prisFarvet = "\u001B[32m" + pizza.getPrisPizza() + " ,-\u001B[0m";
+            String pizzanummerFarvet = "\u001B[1m" + pizza.getNummerPizza() + ". " + "\u001B[0m"; //Alle forekomster af pizzaers specifikke numre gøres FED/BOLD.
+            String pizzaNavnFarvet = "\u001B[35;1m" + pizza.getNavnPizza() + "\u001B[0m"; // Alle navne på pizzaerne bliver lilla.
+            String nyhedFarvet = beskrivelser.contains("NYHED") ? "\u001B[31mNYHED\u001B[0m " : ""; // Alle forekomster af beskrivelser med ordet "NYHED" gør "NYHED" rød i en ny String, der hedder nyhedFarvet (indsættes ikke endnu).
+            String prisFarvet = "\u001B[32m" + pizza.getPrisPizza() + " ,-\u001B[0m"; // Alle priser bliver grønne.
 
             if (isNyhed) {
-                beskrivelser = beskrivelser.replace("NYHED", "").trim();
+                beskrivelser = beskrivelser.replace("NYHED", "").trim(); // Hvis beskrivelsen indeholde "NYHED" slettes "NYHED".
             }
 
-            System.out.println("| " + pizzanummerFarvet + ". " + pizzaNavnFarvet + ": " + nyhedFarvet + beskrivelser + prisFarvet + " |");
+            System.out.println("| " + pizzanummerFarvet + ". " + pizzaNavnFarvet + ": " + nyhedFarvet + beskrivelser + prisFarvet + " |"); // nyhedFarvet indsættes på pladsen hvor NYHED stod før.
         }
         System.out.println("|___________________________________________________________________________________________________|");
     }
