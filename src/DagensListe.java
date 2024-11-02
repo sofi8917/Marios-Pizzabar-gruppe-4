@@ -1,19 +1,21 @@
 import java.util.ArrayList;
     public class DagensListe {
+        private static ArrayList<Bestilling> liste; // ArrayListe over alle aktive Bestillinger
 
-        private static ArrayList<Bestilling> liste;
-
+        //Konstruktør der initialiserer liste-attributten
         public DagensListe() {
             liste = new ArrayList<Bestilling>();
         }
 
+        //Metode der tilføjer en Bestilling til DagensListe
         public static void addBestilling(Bestilling bestilling) {
             liste.add(bestilling);
         }
 
-        public void removeBestilling(int ordrenummer) {
+        //Metode der fjerner en Bestilling fra DagensListe
+        public void removeBestilling(String navn) {
             for (Bestilling bestilling : liste) {
-                if (bestilling.getNummer() == ordrenummer) {
+                if (bestilling.getNavn().toLowerCase().trim().equals(navn.toLowerCase().trim())) {
                     liste.remove(bestilling);
                     System.out.println("Bestilling fjernet");
                     return;
@@ -22,11 +24,12 @@ import java.util.ArrayList;
             System.out.println("Bestilling findes ikke");
         }
 
-
+        //Metode der rydder DagensListe for alle Bestillinger
         public void clearListe() {
             liste.clear();
         }
 
+        //Metode der søger igennem en specifik Bestilling i DagensListe ud fra det navn, der er tilknyttet Bestillingen
         public Bestilling searchBestilling(String navn) {
             for (Bestilling s : liste) {
                 if (navn.equals(s.getNavn())) {
@@ -38,12 +41,13 @@ import java.util.ArrayList;
             return null;
         }
 
+        //Metode der ændrer navnet der er tilknyttet en Bestilling i DagensListe
         public void editNavn(String navn1, String navn2) {
             searchBestilling(navn1).setNavn(navn2);
         }
 
-        /*Sorterer elementerne i liste ved at tilføje dem sorteret til en ny liste. Derefter cleares den originale
-        liste og erstattes af den sorterede liste*/
+        //Sorterer elementerne i liste ved at tilføje dem sorteret til en ny liste. Derefter cleares den originale
+        //liste og erstattes af den sorterede liste
         public void sortTid() {
             ArrayList<Bestilling> sorteret = new ArrayList<>();
             for (Bestilling bestilling : liste) {
@@ -66,9 +70,9 @@ import java.util.ArrayList;
             }
             liste.clear();
             liste.addAll(sorteret);
-            System.out.println("Bestillingerne er blevet sorteret efter afhentningstidspunkt.");
         }
 
+        //En toString-metode
         @Override
         public String toString() {
             StringBuilder listeStr = new StringBuilder();

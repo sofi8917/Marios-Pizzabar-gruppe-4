@@ -1,25 +1,30 @@
 import java.util.Scanner;
 import java.util.ArrayList;
-import java.util.List;
 
 public class Main {
+    private static EkspederedeOrdrer ekspederedeOrdrer;
+    private static DagensListe dagensListe;
+
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        DagensListe dagensListe = new DagensListe();
+        dagensListe = new DagensListe();
+        ekspederedeOrdrer = new EkspederedeOrdrer();
         Menu pizzaMenu = new Menu(); // Menuen printes som en del af vores interface.
         boolean user = true;
 
-        while (user) { //Der kører et while-loop for user indtil user = false (eller programmet crasher).
+        while (user) { //Der kører et while-loop for user indtil user = false
             System.out.println("Dagens liste er oprettet. Vælg mellem følgende:");
             System.out.println("1. Tilføj bestilling");
-            System.out.println("2. Fjern en bestilling");
+            System.out.println("2. Annuller en bestilling");
             System.out.println("3. Vis Dagens Liste - alle bestillinger");
-            System.out.println("4. Find specifik bestilling");
-            System.out.println("5. Redigér bestilling");
-            System.out.println("6. Slet Dagens Liste");
-            System.out.println("7. Se listen over Ekspederede ordrer");
-            System.out.println("8. Tak for i dag:)");
+            System.out.println("4. Flyt ordre til listen over Ekspederede ordrer");
+            System.out.println("5. Find specifik bestilling");
+            System.out.println("6. Redigér bestilling");
+            System.out.println("7. Slet Dagens Liste");
+            System.out.println("8. Se listen over Ekspederede ordrer");
+            System.out.println("9. Tak for i dag:)");
             int opgave = sc.nextInt();
+            String navn = "";
 
             switch (opgave) { // Programmet lavet som switch case
                 case 1:
@@ -89,16 +94,23 @@ public class Main {
                     break;
 
                 case 2:
+                    String scannerBug1 = sc.nextLine();
                     System.out.println(dagensListe);
-                    System.out.print("Hvilken bestilling vil du gerne fjerne? (indtast ordrenummer): ");
-                    int ordrenummer = sc.nextInt();
-                    dagensListe.removeBestilling(ordrenummer);
+                    System.out.print("Hvilken bestilling vil du gerne annullere? (indtast kundens navn): ");
+                    navn = sc.nextLine().toLowerCase().trim();
+                    dagensListe.removeBestilling(navn);
                     break;
                 case 3:
                     System.out.println("Her er Dagens liste:");
+                    dagensListe.sortTid();
                     System.out.println(dagensListe);
                     break;
                 case 4:
+                    String scannerBug2 = sc.nextLine();
+                    System.out.println(dagensListe);
+                    System.out.println("Hvilken bestilling vil du gerne fuldende og rykke til listen over Ekspederede Ordrer?");
+                    navn = sc.nextLine().toLowerCase().trim();
+                case 5:
                     boolean searchOrder = true;
                     int searchChoice = sc.nextInt();
                     System.out.println("Vil du søge efter 1. ordrenummer, 2. kundenavn eller 3. telefonnummer?");
@@ -118,9 +130,6 @@ public class Main {
                     }
 
                     break;
-                case 5:
-                    System.out.println("");
-                    break;
                 case 6:
                     System.out.println("");
                     break;
@@ -128,15 +137,22 @@ public class Main {
                     System.out.println("");
                     break;
                 case 8:
+                    System.out.println("");
+                    break;
+                case 9:
                     user = false;
                     System.out.println("Farvel og tak! \uD83D\uDE00");
                     break;
                 default:
                     System.out.println("Ugyldigt valg, prøv igen.");
             }
-
         }
 
+    }
+
+    public void tilføjEkspederede(Bestilling bestilling) {
+        ekspederedeOrdrer.addEkspederetBestilling(bestilling);
+        dagensListe.removeBestilling(bestilling.getNavn());
     }
 
 }

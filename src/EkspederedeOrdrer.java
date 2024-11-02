@@ -15,15 +15,15 @@ public class EkspederedeOrdrer {
     }
 
     // Fjern en ekspederet bestilling baseret på nummer
-    public void removeEkspederetBestilling(int nummer) {
+    public void removeEkspederetBestilling(String navn) {
         for (Bestilling bestilling : ekspederedeBestillinger) {
-            if (bestilling.getNummer() == nummer) {
+            if (bestilling.getNavn().toLowerCase().trim().equals(navn.toLowerCase().trim())) {
                 ekspederedeBestillinger.remove(bestilling);
-                System.out.println("Bestilling " + nummer + " er blevet fjernet fra ekspederede ordrer.");
+                System.out.println("Bestilling fra " + navn + " er blevet fjernet fra ekspederede ordrer.");
                 return;
             }
         }
-        System.out.println("Bestilling " + nummer + " findes ikke.");
+        System.out.println("Bestilling fra " + navn + " findes ikke.");
     }
 
     // Print alle ekspederede bestillinger
