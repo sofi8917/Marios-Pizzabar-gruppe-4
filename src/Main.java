@@ -90,7 +90,6 @@ public class Main {
                     } else {
                         System.out.println("Ugyldigt format. Brug venligst formatet hh:mm.");
                     }
-
                     break;
 
                 case 2:
@@ -110,6 +109,7 @@ public class Main {
                     System.out.println(dagensListe);
                     System.out.println("Hvilken bestilling vil du gerne fuldende og rykke til listen over Ekspederede Ordrer?");
                     navn = sc.nextLine().toLowerCase().trim();
+                    break;
                 case 5:
                     boolean searchOrder = true;
                     int searchChoice = sc.nextInt();
@@ -134,10 +134,36 @@ public class Main {
                     System.out.println("");
                     break;
                 case 7:
-                    System.out.println("");
+                    dagensListe.clearListe();
+                    System.out.println("Dagens Liste er nu slettet.");
                     break;
                 case 8:
                     System.out.println("");
+                    ekspederedeOrdrer.printEkspederedeBestillinger();
+
+                    System.out.println("Vil du sortere listen efter\n1. Flest antal solgte pizzaer?\n2. Færrest antal solgte pizzaer?\n0. gå tilbage til startsiden");
+
+                    int sortChoice = sc.nextInt();
+
+                       switch (sortChoice) {
+                           case 1:
+                               System.out.println();
+
+                               break;
+
+                           case 2:
+                               System.out.println();
+
+                               break;
+
+                           case 0:
+                               break;
+
+                           default:
+                               System.out.println("Ugyldig indtastning, prøv igen.");
+                        }
+
+
                     break;
                 case 9:
                     user = false;
