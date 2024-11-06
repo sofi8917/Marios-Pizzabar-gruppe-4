@@ -2,8 +2,9 @@ import java.util.Scanner;
 import java.util.ArrayList;
 
 public class Main {
-    private static EkspederedeOrdrer ekspederedeOrdrer;
     private static DagensListe dagensListe;
+    private static EkspederedeOrdrer ekspederedeOrdrer;
+
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
